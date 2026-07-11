@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink font-body antialiased;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display tracking-wide;
+}
+
+::selection {
+  @apply bg-ink text-paper;
+}
+
+/* Foco visible accesible en toda la app */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Borde tipo boleto perforado, usado en el ticket de reserva */
+.ticket-edge {
+  position: relative;
+}
+.ticket-edge::before,
+.ticket-edge::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: #F5F3EE;
+  border-radius: 9999px;
+  z-index: 10;
+}
+.ticket-edge::before {
+  left: -12px;
+}
+.ticket-edge::after {
+  right: -12px;
+}
+
+.campo-input {
+  @apply w-full bg-transparent border-b border-line py-2 text-ink placeholder:text-smoke/70 focus:border-ink transition-colors;
+}
+
+.perforation {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    currentColor 0,
+    currentColor 6px,
+    transparent 6px,
+    transparent 14px
+  );
+  width: 1px;
+  opacity: 0.35;
+}
