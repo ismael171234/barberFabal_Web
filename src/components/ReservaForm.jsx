@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../supabaseClient'
 import { NEGOCIO, linkWhatsapp } from '../data/constants'
+import SelectorFecha from './SelectorFecha'
 
 const SERVICIOS_DEFAULT = [
   { id: 'd1', nombre: 'Corte clasico', precio: 25 },
@@ -218,7 +219,7 @@ export default function ReservaForm({ servicioPreseleccionado }) {
           </Campo>
 
           <Campo label="Fecha *" required>
-            <input type="date" min={hoyISO()} value={form.fecha} onChange={(e) => actualizar('fecha', e.target.value)} className="campo-input" />
+            <SelectorFecha value={form.fecha} onChange={(v) => actualizar('fecha', v)} min={hoyISO()} />
           </Campo>
 
           <Campo label="Hora *" required>
