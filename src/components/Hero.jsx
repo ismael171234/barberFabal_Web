@@ -4,6 +4,16 @@ import { IconoInstagram } from './Iconos'
 export default function Hero() {
   return (
     <section id="inicio" className="relative bg-ink text-paper min-h-screen flex items-center overflow-hidden">
+      <div className="absolute inset-0">
+        <img
+          src="/fondo.png"
+          alt=""
+          className="w-full h-full object-cover"
+          onError={(e) => { e.currentTarget.style.display = 'none' }}
+        />
+        <div className="absolute inset-0 bg-ink/70" />
+      </div>
+
       <div
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
         style={{
