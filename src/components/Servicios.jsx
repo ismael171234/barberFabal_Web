@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabaseClient'
 
-// Se usan si la tabla "servicios" en Supabase aún está vacía,
-// para que la sección nunca se muestre rota o en blanco.
 const SERVICIOS_DEFAULT = [
-  { id: 'd1', nombre: 'Corte clásico', descripcion: 'Tijera y máquina, acabado pulido.', precio: 25, duracion_min: 30 },
-  { id: 'd2', nombre: 'Degradado (fade)', descripcion: 'Transición perfecta, diseño a detalle.', precio: 30, duracion_min: 40 },
+  { id: 'd1', nombre: 'Corte clasico', descripcion: 'Tijera y maquina, acabado pulido.', precio: 25, duracion_min: 30 },
+  { id: 'd2', nombre: 'Degradado (fade)', descripcion: 'Transicion perfecta, diseno a detalle.', precio: 30, duracion_min: 40 },
   { id: 'd3', nombre: 'Afeitado tradicional', descripcion: 'Navaja, toalla caliente y espuma.', precio: 20, duracion_min: 25 },
   { id: 'd4', nombre: 'Corte + barba', descripcion: 'Servicio completo, perfilado incluido.', precio: 40, duracion_min: 50 },
-  { id: 'd5', nombre: 'Diseño de barba', descripcion: 'Perfilado con navaja y línea definida.', precio: 18, duracion_min: 20 },
-  { id: 'd6', nombre: 'Corte infantil', descripcion: 'Para los más pequeños, con paciencia.', precio: 20, duracion_min: 30 },
+  { id: 'd5', nombre: 'Diseno de barba', descripcion: 'Perfilado con navaja y linea definida.', precio: 18, duracion_min: 20 },
+  { id: 'd6', nombre: 'Corte infantil', descripcion: 'Para los mas pequenos, con paciencia.', precio: 20, duracion_min: 30 },
 ]
 
 export default function Servicios({ onElegirServicio }) {
@@ -34,7 +32,6 @@ export default function Servicios({ onElegirServicio }) {
 
     cargarServicios()
 
-    // Tiempo real: si el barbero actualiza precios desde el panel, se refleja al instante
     const canal = supabase
       .channel('servicios-realtime')
       .on('postgres_changes', { event: '*', schema: 'public', table: 'servicios' }, cargarServicios)
@@ -55,11 +52,8 @@ export default function Servicios({ onElegirServicio }) {
         <ul>
           {servicios.map((s, i) => (
             <li key={s.id}>
-              <button
-                onClick={() => onElegirServicio?.(s)}
-                className="w-full text-left group py-6 border-t border-line last:border-b flex items-baseline gap-4 hover:bg-ink hover:text-paper transition-colors px-2 -mx-2"
-              >
-                <span className="text-xs text-smoke group-hover:text-paper/60 w-6 shrink-0">
+              <button onClick={() => onElegirServicio?.(s)} className="w-full text-left group py-6 border-t border-line last:border-b flex items-baseline gap-4 hover:bg-ink hover:text-paper transition-colors px-2 -mx-2">
+                <span className="text-xs text-laton group-hover:text-laton w-6 shrink-0">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <span className="text-2xl md:text-3xl font-display tracking-wide shrink-0">

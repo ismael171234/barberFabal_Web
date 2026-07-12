@@ -47,7 +47,7 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest2">
           {LINKS.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className={`link-subrayado transition-opacity ${seccionActiva === l.href ? 'opacity-100' : 'opacity-70 hover:opacity-100'}`}>
+              <a href={l.href} className={`link-subrayado transition-all duration-300 ${seccionActiva === l.href ? 'text-laton opacity-100' : 'opacity-70 hover:opacity-100'}`}>
                 {l.label}
               </a>
             </li>

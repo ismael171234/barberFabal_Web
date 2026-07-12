@@ -27,7 +27,7 @@ export default function Pilares() {
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-px bg-line-dark">
           {PILARES.map((p, i) => (
             <div key={p.titulo} className="group bg-ink p-8 transition-all duration-300 hover:bg-charcoal hover:-translate-y-1">
-              <span className="text-xs text-smoke inline-block transition-transform duration-300 group-hover:scale-125 group-hover:text-paper">
+              <span className="text-xs text-smoke inline-block transition-transform duration-300 group-hover:scale-125 group-hover:text-laton">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <h3 className="text-2xl my-4">{p.titulo}</h3>

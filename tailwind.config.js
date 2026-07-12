@@ -4,12 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        paper: '#F5F3EE',   // blanco hueso, fondo principal claro
-        ink: '#0B0B0A',     // negro profundo, fondo principal oscuro
-        charcoal: '#1A1A18',
-        smoke: '#8A8880',   // gris medio para texto secundario
-        line: '#D9D6CC',    // línea/hairline sobre fondo claro
-        'line-dark': '#333330', // línea/hairline sobre fondo oscuro
+        paper: '#F3ECDC',
+        ink: '#10281F',
+        charcoal: '#183A2C',
+        smoke: '#9C9478',
+        line: '#E0D6BC',
+        'line-dark': '#2A4438',
+        laton: '#C2A25F',
+        'laton-oscuro': '#A3854A',
       },
       fontFamily: {
         display: ['"Bebas Neue"', 'sans-serif'],

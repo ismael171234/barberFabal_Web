@@ -8,13 +8,13 @@ export default function Hero() {
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
         style={{
           backgroundImage:
-            'repeating-linear-gradient(115deg, #F5F3EE 0px, #F5F3EE 1px, transparent 1px, transparent 80px)',
+            'repeating-linear-gradient(115deg, #F3ECDC 0px, #F3ECDC 1px, transparent 1px, transparent 80px)',
         }}
       />
 
       <div
         className="absolute -top-40 -right-40 w-[560px] h-[560px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(245,243,238,0.05) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(243,236,220,0.06) 0%, transparent 70%)' }}
       />
 
       <div className="relative max-w-6xl mx-auto w-full px-6 pt-32 pb-24 grid md:grid-cols-[1.3fr,1fr] gap-12 items-end">
@@ -32,7 +32,7 @@ export default function Hero() {
             tradicional en {NEGOCIO.direccion}.
           </p>
           <div className="hero-anim flex flex-wrap gap-4" style={{ animationDelay: '400ms' }}>
-            <a href="#reservar" className="btn-solido bg-paper text-ink hover:bg-smoke">
+            <a href="#reservar" className="btn-solido bg-laton text-ink hover:bg-laton-oscuro">
               Reservar turno
             </a>
             <a href="#servicios" className="btn-contorno text-paper">

@@ -35,10 +35,17 @@ export default function Contacto() {
           </a>
         </div>
 
-        <div className="aspect-[4/3] border border-line bg-charcoal/5 flex items-center justify-center">
-          <p className="text-smoke text-sm uppercase tracking-widest2 px-6 text-center">
-            Espacio reservado para mapa de Google Maps
-          </p>
+        <div className="aspect-[4/3] border border-line overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+          <iframe
+            src={NEGOCIO.mapaEmbedUrl}
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Ubicacion de FabalStudio"
+          />
         </div>
       </div>
     </section>

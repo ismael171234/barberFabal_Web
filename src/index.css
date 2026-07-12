@@ -47,7 +47,7 @@ textarea:focus-visible {
   transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  background: #F5F3EE;
+  background: #F3ECDC;
   border-radius: 9999px;
   z-index: 10;
 }
@@ -91,7 +91,7 @@ textarea:focus-visible {
 }
 .btn-solido:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px -8px rgba(11, 11, 10, 0.45);
+  box-shadow: 0 10px 24px -8px rgba(16, 40, 31, 0.45);
 }
 .btn-solido:active {
   transform: translateY(-1px);
