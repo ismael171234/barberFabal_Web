@@ -12,6 +12,7 @@ import CTAFinal from './components/CTAFinal'
 import Contacto from './components/Contacto'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import Reveal from './components/Reveal'
 
 export default function App() {
   const [servicioElegido, setServicioElegido] = useState(null)
@@ -25,23 +26,24 @@ export default function App() {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <Nosotros />
-      <Pilares />
-      <Servicios onElegirServicio={handleElegirServicio} />
-      <Galeria />
-      <Equipo />
-      <Testimonios />
 
-      <section id="reservar" className="bg-charcoal py-24 px-6">
+      <Reveal><Nosotros /></Reveal>
+      <Reveal><Pilares /></Reveal>
+      <Reveal><Servicios onElegirServicio={handleElegirServicio} /></Reveal>
+      <Reveal><Galeria /></Reveal>
+      <Reveal><Equipo /></Reveal>
+      <Reveal><Testimonios /></Reveal>
+
+      <Reveal as="section" id="reservar" className="bg-charcoal py-24 px-6">
         <div className="max-w-2xl mx-auto text-center mb-14">
           <p className="uppercase tracking-widest2 text-sm text-smoke mb-3">Toma tu turno</p>
           <h2 className="text-5xl md:text-6xl text-paper">RESERVAR</h2>
         </div>
         <ReservaForm servicioPreseleccionado={servicioElegido} />
-      </section>
+      </Reveal>
 
-      <CTAFinal />
-      <Contacto />
+      <Reveal><CTAFinal /></Reveal>
+      <Reveal><Contacto /></Reveal>
       <Footer />
       <WhatsAppButton />
     </div>

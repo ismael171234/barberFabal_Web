@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../supabaseClient'
 
 const BARBEROS_DEFAULT = [
-  { id: 'b1', nombre: 'Renzo Vílchez', especialidad: 'Degradados y diseño' },
+  { id: 'b1', nombre: 'Renzo Vilchez', especialidad: 'Degradados y diseno' },
   { id: 'b2', nombre: 'Jorge Salinas', especialidad: 'Afeitado tradicional' },
-  { id: 'b3', nombre: 'Diego Morán', especialidad: 'Cortes clásicos' },
+  { id: 'b3', nombre: 'Diego Moran', especialidad: 'Cortes clasicos' },
 ]
 
 export default function Equipo() {
@@ -30,9 +30,9 @@ export default function Equipo() {
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-line-dark">
           {barberos.map((b) => (
-            <div key={b.id} className="bg-ink p-8">
-              <div className="aspect-square bg-charcoal border border-line-dark mb-6 flex items-center justify-center">
-                <span className="font-display text-5xl text-smoke">
+            <div key={b.id} className="group bg-ink p-8 transition-all duration-300 hover:bg-charcoal hover:-translate-y-1">
+              <div className="aspect-square bg-charcoal border border-line-dark mb-6 flex items-center justify-center overflow-hidden">
+                <span className="font-display text-5xl text-smoke transition-transform duration-500 group-hover:scale-110">
                   {b.nombre.split(' ').map((n) => n[0]).join('')}
                 </span>
               </div>

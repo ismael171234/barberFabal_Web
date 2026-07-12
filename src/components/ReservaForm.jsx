@@ -3,18 +3,18 @@ import { supabase } from '../supabaseClient'
 import { NEGOCIO, linkWhatsapp } from '../data/constants'
 
 const SERVICIOS_DEFAULT = [
-  { id: 'd1', nombre: 'Corte clásico', precio: 25 },
+  { id: 'd1', nombre: 'Corte clasico', precio: 25 },
   { id: 'd2', nombre: 'Degradado (fade)', precio: 30 },
   { id: 'd3', nombre: 'Afeitado tradicional', precio: 20 },
   { id: 'd4', nombre: 'Corte + barba', precio: 40 },
-  { id: 'd5', nombre: 'Diseño de barba', precio: 18 },
+  { id: 'd5', nombre: 'Diseno de barba', precio: 18 },
   { id: 'd6', nombre: 'Corte infantil', precio: 20 },
 ]
 
 const BARBEROS_DEFAULT = [
-  { id: 'b1', nombre: 'Renzo Vílchez' },
+  { id: 'b1', nombre: 'Renzo Vilchez' },
   { id: 'b2', nombre: 'Jorge Salinas' },
-  { id: 'b3', nombre: 'Diego Morán' },
+  { id: 'b3', nombre: 'Diego Moran' },
 ]
 
 function hoyISO() {
@@ -77,7 +77,7 @@ export default function ReservaForm({ servicioPreseleccionado }) {
     }
 
     if (form.tipoAtencion === 'domicilio' && !form.direccion) {
-      setError('Ingresa la dirección para la atención a domicilio.')
+      setError('Ingresa la direccion para la atencion a domicilio.')
       return
     }
 
@@ -116,7 +116,7 @@ export default function ReservaForm({ servicioPreseleccionado }) {
         tipo_atencion: form.tipoAtencion,
         direccion_cliente: form.tipoAtencion === 'domicilio' ? form.direccion : null,
       })
-      setError('Tu reserva se registró para confirmar por WhatsApp (no se pudo guardar en el sistema).')
+      setError('Tu reserva se registro para confirmar por WhatsApp (no se pudo guardar en el sistema).')
     } finally {
       setEnviando(false)
     }
@@ -128,8 +128,8 @@ export default function ReservaForm({ servicioPreseleccionado }) {
       `• Servicio: ${ticket.servicio_nombre ?? 'A definir'}%0A` +
       `• Barbero: ${ticket.barbero_nombre ?? 'Sin preferencia'}%0A` +
       `• Fecha: ${ticket.fecha}  Hora: ${ticket.hora}%0A` +
-      `• Atención: ${ticket.tipo_atencion === 'domicilio' ? 'A domicilio' : 'En el local'}%0A` +
-      (ticket.tipo_atencion === 'domicilio' ? `• Dirección: ${ticket.direccion_cliente}%0A` : '') +
+      `• Atencion: ${ticket.tipo_atencion === 'domicilio' ? 'A domicilio' : 'En el local'}%0A` +
+      (ticket.tipo_atencion === 'domicilio' ? `• Direccion: ${ticket.direccion_cliente}%0A` : '') +
       `• N.º de ticket: ${ticket.id}`
     : ''
 
@@ -145,15 +145,15 @@ export default function ReservaForm({ servicioPreseleccionado }) {
             <p><span className="text-smoke">Servicio:</span> {ticket.servicio_nombre ?? '—'}</p>
             <p><span className="text-smoke">Barbero:</span> {ticket.barbero_nombre ?? 'Sin preferencia'}</p>
             <p><span className="text-smoke">Fecha:</span> {ticket.fecha} · {ticket.hora}</p>
-            <p><span className="text-smoke">Atención:</span> {ticket.tipo_atencion === 'domicilio' ? 'A domicilio' : 'En el local'}</p>
+            <p><span className="text-smoke">Atencion:</span> {ticket.tipo_atencion === 'domicilio' ? 'A domicilio' : 'En el local'}</p>
             {ticket.tipo_atencion === 'domicilio' && (
-              <p><span className="text-smoke">Dirección:</span> {ticket.direccion_cliente}</p>
+              <p><span className="text-smoke">Direccion:</span> {ticket.direccion_cliente}</p>
             )}
           </div>
 
           <div className="perforation mx-auto mb-8" />
 
-          <a href={`https://wa.me/${NEGOCIO.whatsapp}?text=${mensajeConfirmacion}`} target="_blank" rel="noopener noreferrer" className="inline-block bg-paper text-ink px-8 py-4 uppercase tracking-widest2 text-sm hover:bg-smoke transition-colors">
+          <a href={`https://wa.me/${NEGOCIO.whatsapp}?text=${mensajeConfirmacion}`} target="_blank" rel="noopener noreferrer" className="btn-solido bg-paper text-ink hover:bg-smoke">
             Confirmar por WhatsApp
           </a>
 
@@ -172,7 +172,7 @@ export default function ReservaForm({ servicioPreseleccionado }) {
         </div>
 
         <div className="mb-6">
-          <span className="block text-xs uppercase tracking-widest2 text-smoke mb-2">Tipo de atención *</span>
+          <span className="block text-xs uppercase tracking-widest2 text-smoke mb-2">Tipo de atencion *</span>
           <div className="flex gap-3">
             <button type="button" onClick={() => actualizar('tipoAtencion', 'local')} className={`flex-1 py-3 text-sm uppercase tracking-widest2 border transition-colors ${form.tipoAtencion === 'local' ? 'bg-ink text-paper border-ink' : 'border-line text-ink hover:border-ink'}`}>
               En el local
@@ -188,31 +188,15 @@ export default function ReservaForm({ servicioPreseleccionado }) {
 
         <div className="grid sm:grid-cols-2 gap-6">
           <Campo label="Nombre completo *" required>
-            <input
-              type="text"
-              value={form.nombre}
-              onChange={(e) => actualizar('nombre', e.target.value)}
-              className="campo-input"
-              placeholder="Tu nombre"
-            />
+            <input type="text" value={form.nombre} onChange={(e) => actualizar('nombre', e.target.value)} className="campo-input" placeholder="Tu nombre" />
           </Campo>
 
           <Campo label="Celular (WhatsApp) *" required>
-            <input
-              type="tel"
-              value={form.telefono}
-              onChange={(e) => actualizar('telefono', e.target.value)}
-              className="campo-input"
-              placeholder="9XX XXX XXX"
-            />
+            <input type="tel" value={form.telefono} onChange={(e) => actualizar('telefono', e.target.value)} className="campo-input" placeholder="9XX XXX XXX" />
           </Campo>
 
           <Campo label="Servicio *" required>
-            <select
-              value={form.servicioId}
-              onChange={(e) => actualizar('servicioId', e.target.value)}
-              className="campo-input"
-            >
+            <select value={form.servicioId} onChange={(e) => actualizar('servicioId', e.target.value)} className="campo-input">
               <option value="">Elige un servicio</option>
               {servicios.map((s) => (
                 <option key={s.id} value={s.id}>
@@ -223,11 +207,7 @@ export default function ReservaForm({ servicioPreseleccionado }) {
           </Campo>
 
           <Campo label="Barbero (opcional)">
-            <select
-              value={form.barberoId}
-              onChange={(e) => actualizar('barberoId', e.target.value)}
-              className="campo-input"
-            >
+            <select value={form.barberoId} onChange={(e) => actualizar('barberoId', e.target.value)} className="campo-input">
               <option value="">Sin preferencia</option>
               {barberos.map((b) => (
                 <option key={b.id} value={b.id}>
@@ -238,34 +218,17 @@ export default function ReservaForm({ servicioPreseleccionado }) {
           </Campo>
 
           <Campo label="Fecha *" required>
-            <input
-              type="date"
-              min={hoyISO()}
-              value={form.fecha}
-              onChange={(e) => actualizar('fecha', e.target.value)}
-              className="campo-input"
-            />
+            <input type="date" min={hoyISO()} value={form.fecha} onChange={(e) => actualizar('fecha', e.target.value)} className="campo-input" />
           </Campo>
 
           <Campo label="Hora *" required>
-            <input
-              type="time"
-              value={form.hora}
-              onChange={(e) => actualizar('hora', e.target.value)}
-              className="campo-input"
-            />
+            <input type="time" value={form.hora} onChange={(e) => actualizar('hora', e.target.value)} className="campo-input" />
           </Campo>
 
           {form.tipoAtencion === 'domicilio' && (
             <div className="sm:col-span-2">
-              <Campo label="Dirección de atención *" required>
-                <input
-                  type="text"
-                  value={form.direccion}
-                  onChange={(e) => actualizar('direccion', e.target.value)}
-                  className="campo-input"
-                  placeholder="Calle, número, referencia"
-                />
+              <Campo label="Direccion de atencion *" required>
+                <input type="text" value={form.direccion} onChange={(e) => actualizar('direccion', e.target.value)} className="campo-input" placeholder="Calle, numero, referencia" />
               </Campo>
             </div>
           )}
@@ -273,11 +236,7 @@ export default function ReservaForm({ servicioPreseleccionado }) {
 
         {error && <p className="text-sm text-ink/80 mt-6 border border-line px-4 py-3">{error}</p>}
 
-        <button
-          type="submit"
-          disabled={enviando}
-          className="mt-8 w-full bg-ink text-paper py-4 uppercase tracking-widest2 text-sm hover:bg-charcoal transition-colors disabled:opacity-50"
-        >
+        <button type="submit" disabled={enviando} className="mt-8 w-full bg-ink text-paper py-4 uppercase tracking-widest2 text-sm transition-all duration-300 hover:bg-charcoal hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 disabled:translate-y-0 disabled:shadow-none">
           {enviando ? 'Reservando…' : 'Reservar turno'}
         </button>
       </div>

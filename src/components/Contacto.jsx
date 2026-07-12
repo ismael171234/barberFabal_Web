@@ -1,4 +1,5 @@
 import { NEGOCIO, linkWhatsapp, mensajeWhatsappGeneral } from '../data/constants'
+import { IconoInstagram, IconoWhatsapp } from './Iconos'
 
 export default function Contacto() {
   return (
@@ -20,14 +21,16 @@ export default function Contacto() {
             <div>
               <dt className="text-xs uppercase tracking-widest2 text-smoke mb-1">Instagram</dt>
               <dd>
-                <a href={NEGOCIO.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:opacity-60 transition-opacity">
+                <a href={NEGOCIO.instagramUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:opacity-60 transition-opacity">
+                  <IconoInstagram className="w-4 h-4 shrink-0" />
                   {NEGOCIO.instagram}
                 </a>
               </dd>
             </div>
           </dl>
 
-          <a href={linkWhatsapp(mensajeWhatsappGeneral)} target="_blank" rel="noopener noreferrer" className="inline-block mt-10 bg-ink text-paper px-8 py-4 uppercase tracking-widest2 text-sm hover:bg-charcoal transition-colors">
+          <a href={linkWhatsapp(mensajeWhatsappGeneral)} target="_blank" rel="noopener noreferrer" className="btn-solido mt-10 bg-ink text-paper hover:bg-charcoal">
+            <IconoWhatsapp className="w-4 h-4 shrink-0" />
             Escribenos por WhatsApp
           </a>
         </div>
