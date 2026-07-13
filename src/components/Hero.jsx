@@ -1,16 +1,32 @@
+import { useEffect, useState } from 'react'
 import { NEGOCIO } from '../data/constants'
 import { IconoInstagram } from './Iconos'
 
+const IMAGENES_HERO = ['/fondo.png', '/fondo2.png', '/fondo3.png']
+
 export default function Hero() {
+  const [indiceImagen, setIndiceImagen] = useState(0)
+
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setIndiceImagen((i) => (i + 1) % IMAGENES_HERO.length)
+    }, 6000)
+    return () => clearInterval(intervalo)
+  }, [])
+
   return (
     <section id="inicio" className="relative bg-ink text-paper min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img
-          src="/fondo.png"
-          alt=""
-          className="w-full h-full object-cover"
-          onError={(e) => { e.currentTarget.style.display = 'none' }}
-        />
+        {IMAGENES_HERO.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] ease-in-out"
+            style={{ opacity: i === indiceImagen ? 1 : 0 }}
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
+        ))}
         <div className="absolute inset-0 bg-ink/70" />
       </div>
 
@@ -68,6 +84,21 @@ export default function Hero() {
           <path d="M12 4v16M6 14l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </a>
+
+      {IMAGENES_HERO.length > 1 && (
+        <div className="absolute bottom-8 right-8 flex gap-2 z-10">
+          {IMAGENES_HERO.map((src, i) => (
+            <button
+              key={src}
+              onClick={() => setIndiceImagen(i)}
+              aria-label={`Ver foto ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === indiceImagen ? 'bg-laton w-6' : 'bg-paper/40 w-1.5 hover:bg-paper/70'
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   )
 }
